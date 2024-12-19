@@ -14,110 +14,45 @@
             <img src="/assets/logo.webp" alt="Production Tracker" class="app-logo">
             <span>Production Tracker</span>
         </div>
+        <nav class="header-nav">
+            <button onclick="window.location.href='/'" class="nav-button active">Home</button>
+            <button onclick="window.location.href='/pages/products'" class="nav-button">Products</button>
+            <button onclick="window.location.href='/pages/logs'" class="nav-button">Logs</button>
+        </nav>
         <div class="header-controls">
-            <button type="button" class="icon-button theme-toggle" title="Toggle theme"
-                onclick="toggleTheme()">🌓</button>
-            <button type="button" class="icon-button refresh-button" title="Refresh page"
-                onclick="refreshPage()">↻</button>
+            <button type="button" class="icon-button theme-toggle" title="Toggle theme" onclick="toggleTheme()">🌓</button>
+            <button type="button" class="icon-button refresh-button" title="Refresh page" onclick="refreshPage()">↻</button>
         </div>
     </header>
 
-    <main class="content-container">
-        <section id="addLogSection">
-            <h2>Add Production Log</h2>
-            <form id="productionForm">
-                <div class="form-group">
-                    <label for="productSearch">Search Product:</label>
-                    <div class="select-container">
-                        <div class="search-controls">
-                            <input type="text" id="productSearch" class="product-search"
-                                placeholder="Type to search products...">
-                            <button type="button" class="icon-button clear-button" title="Clear search"
-                                onclick="clearProductSearch()">✕</button>
-                        </div>
-                        <select id="productSelect" class="filtered-select" required>
-                            <option value="">Select a product</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" required>
-                    <span id="unitTypeDisplay"></span>
-                </div>
-                <button type="submit">Add Production Log</button>
-            </form>
-        </section>
-
-        <section id="addLogSection">
-            <h2>Add Production Log</h2>
-            <!-- Previous production log form remains unchanged -->
-
-            <div class="product-management">
-                <h2>Product Management</h2>
-                <form id="productForm" class="product-form">
-                    <div class="form-group">
-                        <label for="productName">Product Name:</label>
-                        <input type="text" id="productName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="productCategory">Category:</label>
-                        <input type="text" id="productCategory" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="productUnitType">Unit Type:</label>
-                        <input type="text" id="productUnitType" required>
-                    </div>
-                    <button type="submit">Add Product</button>
-                </form>
-
-                <table id="productTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Unit Type</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productTableBody"></tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="viewLogsSection">
-            <h2>View Production Logs</h2>
-            <div class="date-filter">
-                <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate">
-                <label for="endDate">End Date:</label>
-                <input type="date" id="endDate">
-                <button id="filterButton">Filter</button>
-                <button id="exportButton" onclick="exportProductionLogs()">Export Logs</button>
-
+    <main class="content-container home-container">
+        <section class="export-section">
+            <h2>Export Reports</h2>
+            <div class="export-card">
                 <div class="export-controls">
-                    <label for="summaryDate">Select Date:</label>
-                    <input type="date" id="summaryDate">
-                    <button onclick="exportCategorySummary()">Export Category Summary</button>
-                    <button onclick="exportDetailedCategorySummary()">Export Detailed Summary</button>
+                    <div class="form-group">
+                        <label for="summaryDate">Select Date:</label>
+                        <input type="date" id="summaryDate">
+                    </div>
+                    <div class="export-buttons">
+                        <button onclick="exportCategorySummary()">Export Category Summary</button>
+                        <button onclick="exportDetailedCategorySummary()">Export Detailed Summary</button>
+                    </div>
+                </div>
+                
+                <div class="date-range-export">
+                    <h3>Export Production Logs</h3>
+                    <div class="form-group">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" id="endDate">
+                    </div>
+                    <button onclick="exportProductionLogs()">Export Logs</button>
                 </div>
             </div>
-            <table id="productionTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Created At</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Unit Type</th>
-                        <th>Category</th>
-                        <th>Updation Reason</th>
-                        <th>Updated At</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="productionData"></tbody>
-            </table>
         </section>
     </main>
 

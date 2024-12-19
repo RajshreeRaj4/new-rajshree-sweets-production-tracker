@@ -1,0 +1,31 @@
+/* Product page specific styles */
+#addProductSection {
+    flex: 1;
+    background: var(--section-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+#viewProductsSection {
+    flex: 2;
+    background: var(--section-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.product-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Ensure consistent spacing */
+.content-container {
+    gap: 20px;
+    padding: 90px 20px 20px 20px;
+}

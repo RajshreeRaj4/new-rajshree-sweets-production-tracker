@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Production Tracker</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="app-title">
+            <img src="/assets/logo.webp" alt="Production Tracker" class="app-logo">
+            <span>Production Tracker</span>
+        </div>
+        <nav class="header-nav">
+            <button onclick="window.location.href='/'" class="nav-button">Home</button>
+            <button onclick="window.location.href='/pages/products'" class="nav-button active">Products</button>
+            <button onclick="window.location.href='/pages/logs'" class="nav-button">Logs</button>
+        </nav>
+        <div class="header-controls">
+            <button type="button" class="icon-button theme-toggle" title="Toggle theme" onclick="toggleTheme()">🌓</button>
+            <button type="button" class="icon-button refresh-button" title="Refresh page" onclick="refreshPage()">↻</button>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <section id="addProductSection">
+            <h2>Add Product</h2>
+            <form id="productForm" class="product-form">
+                <div class="form-group">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Category:</label>
+                    <select id="productCategory" required>
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productUnitType">Unit Type:</label>
+                    <select id="productUnitType" required>
+                        <!-- Unit types will be populated via JavaScript -->
+                    </select>
+                </div>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+
+        <section id="viewProductsSection">
+            <h2>Product List</h2>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Unit Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="editProductDialog" class="modal">
+        <div class="modal-content">
+            <h3>Edit Product</h3>
+            <form id="editProductForm">
+                <div class="form-group">
+                    <label for="editProductName">Name:</label>
+                    <input type="text" id="editProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductCategory">Category:</label>
+                    <select id="editProductCategory" required>
+                        <!-- Categories will be populated via JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editProductUnitType">Unit Type:</label>
+                    <select id="editProductUnitType" required>
+                        <!-- Unit types will be populated via JavaScript -->
+                    </select>
+                </div>
+                <button type="submit">Update</button>
+                <button type="button" onclick="closeEditProductDialog()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
