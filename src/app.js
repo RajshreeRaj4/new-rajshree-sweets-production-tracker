@@ -81,7 +81,7 @@ function createWindow() {
                 quantity,
                 createdAt,
                 updatedAt
-            ) VALUES (?, ?, ${db.getCurrentISTDateTime()}, ${db.getCurrentISTDateTime()})`,
+            ) VALUES (?, ROUND(?, 2), ${db.getCurrentISTDateTime()}, ${db.getCurrentISTDateTime()})`,
             [productId, quantity],
             function (err) {
                 if (err) return res.status(500).json({ error: err.message });
@@ -130,7 +130,7 @@ function createWindow() {
 
         db.run(
             `UPDATE productionLog 
-             SET quantity = ?, 
+             SET quantity = ROUND(?, 2), 
                  updationReason = ?, 
                  updatedAt = ${db.getCurrentISTDateTime()}
              WHERE id = ?`,

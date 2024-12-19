@@ -148,13 +148,13 @@ async function loadProductionLogs() {
                 <td>${log.id}</td>
                 <td>${new Date(log.createdAt).toLocaleString()}</td>
                 <td>${log.productName}</td>
-                <td>${log.quantity}</td>
+                <td>${Number(log.quantity).toFixed(2)}</td>
                 <td>${log.unitType}</td>
                 <td>${log.category}</td>
                 <td>${log.updationReason || ''}</td>
                 <td>${log.updatedAt ? new Date(log.updatedAt).toLocaleString() : ''}</td>
                 <td>
-                    <button class="action-button edit-button" onclick="openEditDialog(${log.id}, ${log.quantity}, '${log.unitType}')">Edit</button>
+                    <button class="action-button edit-button" onclick="openEditDialog(${log.id}, ${Number(log.quantity).toFixed(2)}, '${log.unitType}')">Edit</button>
                     <button class="action-button delete-button" onclick="deleteLog(${log.id})">Delete</button>
                 </td>
             `;
@@ -241,7 +241,7 @@ async function handleProductionFormSubmit(e) {
 
     const formData = {
         productId: productSelect.value,
-        quantity: quantityInput.value
+        quantity: Number(quantityInput.value).toFixed(2)
     };
 
     try {
@@ -271,7 +271,7 @@ async function handleEditFormSubmit(e) {
     if (!quantityInput || !reasonInput || !currentEditingLogId) return;
 
     const formData = {
-        quantity: quantityInput.value,
+        quantity: Number(quantityInput.value).toFixed(2),
         updationReason: reasonInput.value
     };
 

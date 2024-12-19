@@ -56,3 +56,37 @@
     color: var(--text-color);
     font-weight: 500;
 }
+
+/* Style number inputs */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Add custom spinners */
+.quantity-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.quantity-wrapper input[type="number"] {
+    padding-right: 25px;
+}
+
+.quantity-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 14l5-5 5 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
