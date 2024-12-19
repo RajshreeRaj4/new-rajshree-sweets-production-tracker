@@ -78,10 +78,30 @@
     </main>
 
     <div id="editDialog" class="modal">
-        <!-- Edit log dialog content remains the same -->
+        <div class="modal-content">
+            <h3>Edit Production Log</h3>
+            <form id="editForm">
+                <div class="form-group">
+                    <label for="editQuantity">Quantity:</label>
+                    <input type="number" id="editQuantity" required>
+                    <span id="editUnitTypeDisplay"></span>
+                </div>
+                <div class="form-group">
+                    <label for="editReason">Updation Reason:</label>
+                    <textarea id="editReason" required></textarea>
+                </div>
+                <button type="submit">Update</button>
+                <button type="button" onclick="closeEditDialog()">Cancel</button>
+            </form>
+        </div>
     </div>
 
     <script src="/script.js"></script>
+    <script>
+        // Initialize theme before other scripts
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

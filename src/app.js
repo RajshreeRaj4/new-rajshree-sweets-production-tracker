@@ -143,19 +143,22 @@ function createWindow() {
     });
 
     serverApp.get('/api/products', (req, res) => {
-        const query = `
-            SELECT 
+        db.all(
+            `SELECT 
                 id, 
                 name,
                 category,
                 unitType
             FROM products 
-            ORDER BY name ASC`;
-
-        db.all(query, (err, rows) => {
-            if (err) return res.status(500).json({ error: err.message });
-            res.json(rows);
-        });
+            ORDER BY name ASC`,
+            (err, rows) => {
+                if (err) {
+                    console.error('Database error:', err);
+                    return res.status(500).json({ error: err.message });
+                }
+                res.json(rows);
+            }
+        );
     });
 
     serverApp.post('/api/export-production-logs', async (req, res) => {
@@ -248,7 +251,10 @@ function createWindow() {
         const { id } = req.params;
 
         db.run('DELETE FROM productionLog WHERE id = ?', [id], function (err) {
-            if (err) return res.status(500).json({ error: err.message });
+            if (err) {
+                console.error('Error deleting production log:', err);
+                return res.status(500).json({ error: err.message });
+            }
             res.json({ success: true });
         });
     });

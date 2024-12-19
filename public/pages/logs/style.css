@@ -1,0 +1,58 @@
+.filtered-select {
+    width: 100%;
+    max-height: 200px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.filtered-select option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.filtered-select option:checked {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+
+.filtered-select option:hover {
+    background-color: var(--hover-color);
+    color: var(--table-header-text);
+}
+
+/* Hide but keep functionality of hidden options */
+.filtered-select option[hidden] {
+    display: none;
+}
+
+/* Style the search input */
+.product-search {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.search-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.search-controls .product-search {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Unit type display */
+#unitTypeDisplay {
+    margin-left: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
